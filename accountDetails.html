@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Account Details</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/img.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg_04.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-30 p-b-50">
+					<span class="login100-form-title p-b-41">
+						Account Details
+					</span>
+					
+					<div class="wrap-input100 m-b-23">
+                        <input id="firstName" class="input100" type="text" placeholder="enter first name">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 m-b-23">
+						<input id="lastName" class="input100" type="text" placeholder="enter last name">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100  m-b-23">
+						<input id="idNumber" class="input100" type="number" placeholder="enter ID number">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 m-b-23">
+						<select name="" id="gender" class="input100" placeholder="enter ID number">
+                            <option value="" disable selected>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+					<div class="wrap-input100 m-b-23">
+						<input id="phoneNumber" class="input100" type="number" placeholder="enter phone number">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+              
+                    <div class="wrap-input100 m-b-23">
+						<input id="physicalAddress" class="input100" type="text" placeholder="enter physical address">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-23">
+						<input id="meterNumber" class="input100" type="number" placeholder="enter meter number">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+				
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button id="btn-details" class="login100-form-btn" type="button">
+								Confirm Details
+							</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	
+
+	<script src="js/index.js"></script>
+	<script>
+		firebase.auth().onAuthStateChanged(function(user){
+
+			if (user){
+				var userID = firebase.auth().currentUser.uid;
+
+				firebase.database().ref('Users/' + userID).once('value').then(function(snapshot){
+					if(snapshot.val()){
+						window.location.href = "MainPage.html";
+					}
+				});	
+			}
+
+		});
+	</script>
+
+</body>
+</html>
