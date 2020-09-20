@@ -211,7 +211,7 @@ iframe {
 
 .wrap-input100 {
   width: 100%;
-  
+  position: relative;
   border-bottom: 2px solid #d9d9d9;
 }
 
@@ -224,6 +224,7 @@ iframe {
 }
 
 .input100 {
+  
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #333333;
@@ -336,10 +337,10 @@ iframe {
   width: 300%;
   height: 100%;
   background: #a64bf4;
-  background: -webkit-linear-gradient(right, navy, navy, navy, navy);
-  background: -o-linear-gradient(right, navy, navy, navy, navy);
-  background: -moz-linear-gradient(right, navy, navy, navy, navy);
-  background: linear-gradient(right, navy, navy, navy, navy);
+  background: -webkit-linear-gradient(right, #1b45cf, #1b45cf, #1b45cf, #1b45cf);
+  background: -o-linear-gradient(right, #1b45cf, #1b45cf, #1b45cf, #1b45cf);
+  background: -moz-linear-gradient(right, #1b45cf, #1b45cf, #1b45cf, #1b45cf);
+  background: linear-gradient(right, #1b45cf, #1b45cf, #1b45cf, #1b45cf);
   top: 0;
   left: -100%;
 
@@ -433,6 +434,16 @@ iframe {
   opacity: 1;
 }
 
+/*small////////////////////////////////////////////////////////////*/
+.wrap-login100 small{
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
@@ -474,163 +485,3 @@ iframe {
     padding-right: 15px;
   }
 } 
-/*//////////////////////////////////////////////////////////////////
-*/
-body
-{
-	padding: 0px;
-	margin: 0px;
-	background-color: purple;
-	background-position: center;
-	font-family: sans-serif;
-}
-
-#wrapper 
-{
-  width: 30%;
-  margin: 130px auto;
-  padding: 10px;
-  background-color: rgba(200, 200, 200, .5);
-  border: 5px solid #D7FBFF;
-}
-
-form 
-{
-  margin: 30px auto;
-  margin-left: 30px;
-}
-
-.textInput 
-{
-  border: none;
-  height: 28px;
-  margin: 2px;
-  border: 1px solid #6B7363;
-  font-size: 1.2em;
-  padding: 5px;
-  width: 70%;
-}
-
-.textInput:focus 
-{
-  outline: none;
-}
-
-
-#wrapper input[type=number] 
-{
-			    width: 50%;
-			    height:3px; 
-			    padding: 15px 20px;
-			    margin: 5px 0; 
-			    border-radius: 5px;
-}
-
-#wrapper input[type=text] 
-{
-			    width: 50%;
-			    height:3px; 
-			    padding: 15px 20px;
-			    margin: 5px 0; 
-			    border-radius: 5px;
-}
-
-#wrapper input[type=email] 
-{
-			    width: 50%;
-			    height:3px; 
-			    padding: 15px 20px;
-			    margin: 5px 0; 
-			    border-radius: 5px;
-}
-
-#wrapper input[type=submit]
-{
-				width: 90px;
-				border: none;
-				margin-top: 5px;
-				font-weight:bold; 
-				background:#228B22; 
-				border:0.5px solid green; 
-				color:white; 
-				border-radius: 5px;
-  				padding: 12px;
-}
-
-#wrapper input[type=reset]
-{
-				width: 90px;
-				border: none;
-				margin-top: 5px;
-				font-weight:bold; 
-				background:#E00128; 
-				border:0.5px solid white; 
-				color:white; 
-				border-radius: 5px;
-  				padding: 12px;
-}
-
-.mytable
-{
-	  width: 60%;
-	  margin: 100px auto;
-	  padding: 10px;
-	  background-color: rgba(200, 200, 200, .5);
-	  border: 5px solid #D7FBFF;
-}
-
-/*=================================================================================================*/
-/*------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------------------*/
-/*for all ul in #menubar*/
-#menubar ul{
-  list-style: none;
-}
-
-/*float all <li> in #menubar to left*/
-#menubar>li{
-  float: left;
-}
-
-/*for all <a>*/
-#menubar li a{
-  display: block;
-  height: 50px;
-  width: 150px;
-  padding: 10px;
-  text-decoration: none;
-}
-
-/*only for those <a> that are in #menubar*/
-#menubar>li>a{
-  background-color: #fdc40b;
-  color: #fff;
-}
-
-/*submenu - #linklist
-to be displayed on top of all
-initially hidden
-*/
-#linklist{
-  position: absolute;
-  background-color: #efefef;
-  z-index: 9999;
-  display: none;
-}
-
-/*only for those <a> that are in #linklist*/
-#linklist>li>a{
-  color: #121;
-  width: auto;
-}
-
-/*for all <a>*/
-#menubar li a:hover{
-  background-color: #d6bf58;
-  color: #fff;
-}
-
-/*for #linklist submenu*/
-#menubar li:hover #linklist{
-  display: block;
-}

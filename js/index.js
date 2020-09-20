@@ -28,7 +28,7 @@ $("#btn-signin").click(function() {
         var errorMessage = error.message;
 
         console.log(errorCode);
-        onsole.log(errorMessage) ;
+        console.log(errorMessage) ;
         window.alert("Message: " + errorMessage);
 
       });
@@ -55,7 +55,7 @@ $("#btn-signin").click(function() {
             var errorMessage = error.message;
   
             console.log(errorCode);
-            onsole.log(errorMessage) ;
+            console.log(errorMessage) ;
             window.alert("Message: " + errorMessage);
   
         });
@@ -84,7 +84,7 @@ $("#btn-forgotPassword").click(function() {
       var errorMessage = error.message;
   
       console.log(errorCode);
-      onsole.log(errorMessage) ;
+      console.log(errorMessage) ;
       window.alert("Message: " + errorMessage);
     });
   }
@@ -136,7 +136,7 @@ $("#btn-details").click(function() {
         var errorMessage = error.message;
     
         console.log(errorCode);
-        onsole.log(errorMessage);
+        console.log(errorMessage);
 
         window.alert("Message: " + errorMessage);
       }
@@ -146,49 +146,7 @@ $("#btn-details").click(function() {
     });
   }
   else{
-    windows.alert("Please fill out all fields");
+    window.alert("The form is incomplete. Please fill out all fields");
   }
 
 });
-
-/*
-$("#btn-save").click(function() {
-    var applID = $("#applID").val();
-    var applType = $("#applType").val();
-    var kwh = $("#kwh").val();
-    var houseNo = $("#houseNo").val();
-
-    var databaseRef = firebase.database().ref().Child("Appliances");
-    var  userID = firebase.auth().currentUser.uid;
-    var usersRefer = databaseRef.child(userID);
-
-    if(applID != "" && applType != "" && kwh != "" && houseNo != ""){
-
-        var applData = {
-        "applID": applID,
-        "applType": applType,
-        "kwh": kwh,
-        "houseNo": houseNo,
-        };
-
-        usersRefer.set(applData, function(error){
-        
-        if(error){
-            var errorCode = error.code;
-            var errorMessage = error.message;
-        
-            console.log(errorCode);
-            onsole.log(errorMessage);
-
-            window.alert("Message: " + errorMessage);
-        }
-        else{
-            window.alert("Your appliance has been added");  
-            }
-        });
-    }
-    else{
-        windows.alert("Please fill out all fields");
-    }
-});
-*/

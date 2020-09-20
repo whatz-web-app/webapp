@@ -22,17 +22,17 @@
 				<div class="container-fluid">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a class="navbar-brand" style = "color:whitesmoke; text-decoration-style:wavy;">
+							<a class="navbar-brand" style = "color:whitesmoke; text-decoration-style:wavy;" href = "#">
 								WHATZ
 							</a>
 						</li>
 						<li>
-							<a class="nav-link" style = "color:whitesmoke; text-decoration-style:wavy;" href = "MainPage.html">
+							<a class="nav-link" style = "color:whitesmoke; text-decoration-style:wavy;" href = "#">
 								<span style="color: white">Home</span>
 							</a>
 						</li>
 						<li>
-							<a class="nav-link" style = "color:whitesmoke; text-decoration-style:wavy;" href = "addAppliances.html">
+							<a class="nav-link" style = "color:whitesmoke; text-decoration-style:wavy;" href = "#">
 								<span style = "color: white">Add Appliances</span>
 							</a>
 						</li>
@@ -96,7 +96,7 @@
 	<script>
 	firebase.auth().onAuthStateChanged(function(user){
 		if (!user){
-			window.location.href = "index.html";
+			window.location.href = "signin.html";
 		}
 
 	});
