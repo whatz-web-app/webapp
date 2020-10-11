@@ -14,6 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 firebase.auth.Auth.Persistence.LOCAL; 
 
+//--------------------------Signin button starts here--------------
 $("#btn-signin").click(function() {
 
     var email = $("#email").val();
@@ -38,7 +39,10 @@ $("#btn-signin").click(function() {
         window.alert("Form is incomplete, please fill out all fields");
     }
 });
+//--------------------------Signin button ends here-------------------
 
+
+//--------------------------Signup button starts here-----------------
   $("#btn-signup").click(function() {
 
     var email = $("#email").val();
@@ -68,8 +72,10 @@ $("#btn-signin").click(function() {
         window.alert("Form is incomplete, please fill out all fields");
     }
 });
+//--------------------------Signup button ends here------------------
 
 
+//--------------------------forgot password button starts here----------------
 $("#btn-forgotPassword").click(function() {
 
   var auth = firebase.auth();
@@ -91,17 +97,17 @@ $("#btn-forgotPassword").click(function() {
   else{
     window.alert("Please enter your email");
   }
-
-
-
 });
+//--------------------------forgot password button ends here----------------
 
-
+//------------Logout button ----------------------
   $("#btn-logout").click(function() {
 
     firebase.auth().signOut();
 });
+//------------Logout button ends here-------------
 
+//------------------------------------------------------Account details button-----------------------------------------------------
 $("#btn-details").click(function() {
 
   var fName = $("#firstName").val();
@@ -148,5 +154,66 @@ $("#btn-details").click(function() {
   else{
     window.alert("The form is incomplete. Please fill out all fields");
   }
-
 });
+//--------------------------------------------------------Account details button-----------------------------------------------------------
+
+//--------------------------Calculate button-----------------------------------
+$("#btn-calculate-wattz").click(function(){
+
+  var tokenNum = $("#token").val();
+  var meterNumber = $("#meter-num").val();
+/*
+  if(tokenNum.length()!=13){
+    document.getElementById("token").innerHTML = "Please enter a 13 digit token";
+    return false;
+  }
+
+  if(meterNumber.length()!=11){
+    document.getElementById("meter-num").innerHTML = "Please enter an 11 digit meter";
+    return false;
+  }*/
+
+
+  var rootRef = firebase.database().ref().child("Token");
+  var  userID = firebase.auth().currentUser.uid;
+  var usersRef = rootRef.child(userID);
+
+  if (tokenNum != "" && meterNumber != ""){
+    var userData = {
+      "token": tokenNum,
+      "meter-num": meterNumber,
+    };
+
+    usersRef.set(userData, function(error){
+      
+      if(error){
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    
+        console.log(errorCode);
+        console.log(errorMessage);
+
+        window.alert("Message: " + errorMessage);
+      }
+      else{
+        window.alert("Your usage for this month is 250kwh");  
+      }
+    });
+
+  }
+  else{
+    window.alert("The form is incomplete. Please fill out all fields");
+  }
+});
+//--------------------------Calculate button ends here-----------------------------------
+
+//---------------------------Schedule page---------------------------------
+function switchView(view){
+  $.get({
+    url:view,
+    cache:false,
+  })
+  .then(function(data){
+    $("#container").html(data);
+  });
+  }
